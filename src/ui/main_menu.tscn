@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqd7ypxart2e3"]
+
+[ext_resource type="Script" path="res://src/ui/main_menu.gd" id="1_4fgbf"]
+[ext_resource type="FontVariation" uid="uid://cy36dde3oif13" path="res://assets/fonts/PressStart2P_FontVar.res" id="1_wrunk"]
+[ext_resource type="Theme" uid="uid://c485aq3nvu4j0" path="res://assets/game_theme.theme" id="2_2xlck"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dc5ls"]
+font = ExtResource("1_wrunk")
+font_size = 56
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.435294)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_4fgbf")
+test_scene = "res://src/game_modes/test.tscn"
+
+[node name="MainMenuLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="MainMenuLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2xlck")
+
+[node name="TitleContainer" type="CenterContainer" parent="MainMenuLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.25
+grow_horizontal = 2
+
+[node name="TitleLabel" type="Label" parent="MainMenuLayer/Control/TitleContainer"]
+layout_mode = 2
+offset_left = 195.0
+offset_top = 38.0
+offset_right = 764.0
+offset_bottom = 97.0
+text = "Pong Again"
+label_settings = SubResource("LabelSettings_dc5ls")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="CenterContainer" parent="MainMenuLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.95
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuLayer/Control/ButtonContainer"]
+custom_minimum_size = Vector2(360, 280)
+layout_mode = 2
+offset_left = 300.0
+offset_top = 49.0
+offset_right = 660.0
+offset_bottom = 329.0
+theme = ExtResource("2_2xlck")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 280.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 328.0
+offset_bottom = 248.0
+theme_override_constants/separation = 8
+
+[node name="PlayButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 296.0
+offset_bottom = 66.0
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 74.0
+offset_right = 296.0
+offset_bottom = 141.0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../PlayButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 149.0
+offset_right = 296.0
+offset_bottom = 216.0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_previous = NodePath("../OptionsButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[node name="LabelContainer" type="HBoxContainer" parent="MainMenuLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VersionLabel" type="Label" parent="MainMenuLayer/Control/LabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 2.0
+offset_right = 135.0
+offset_bottom = 24.0
+text = "v0.0.9.7"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
