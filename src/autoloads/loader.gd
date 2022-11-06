@@ -16,6 +16,7 @@ func _process(_delta: float) -> void:
 		var scene: PackedScene = ResourceLoader.load_threaded_get(curr_scn_path)
 		root.add_child(scene.instantiate(1))
 		curr_scene.queue_free()
+		get_tree().paused = false
 		loading = false
 
 func goto_scene(scene_path: String) -> void:
