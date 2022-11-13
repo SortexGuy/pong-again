@@ -1,26 +1,13 @@
 extends CanvasLayer
 
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var resume_button: Button = %ResumeButton
-@onready var quit_button: Button = %QuitButton
+signal score_changed(p1_score: int, p2_score: int)
 
-@export_file("*.tscn,*.scn") var main_menu_scene: String
+@onready var p1_score_label: Label = %P1ScoreLabel
+@onready var p2_score_label: Label = %P2ScoreLabel
 
 func _ready() -> void:
-	resume_button.pressed.connect(unpause)
-	quit_button.pressed.connect(_quit)
+	score_changed.connect(update_score)
 
-func unpause() -> void:
-	anim_player.play("UnPause")
-	await anim_player.animation_finished
-	get_tree().paused = false
-
-func pause() -> void:
-	get_tree().paused = true
-	anim_player.play("Pause")
-	resume_button.grab_focus()
-
-func _quit() -> void:
-	anim_player.play("UnPause")
-	await anim_player.animation_finished
-	Loader.goto_scene(main_menu_scene)
+func update_score(p1_score: int, p2_score: int) -> void:
+	p1_score_label.text = str(p1_score)
+	p2_score_label.text = str(p2_score)

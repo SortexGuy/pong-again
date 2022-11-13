@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqd7ypxart2e3"]
+[gd_scene load_steps=6 format=3 uid="uid://bqd7ypxart2e3"]
 
 [ext_resource type="Script" path="res://src/ui/main_menu.gd" id="1_4fgbf"]
 [ext_resource type="FontVariation" uid="uid://cy36dde3oif13" path="res://assets/fonts/PressStart2P_FontVar.res" id="1_wrunk"]
 [ext_resource type="Theme" uid="uid://c485aq3nvu4j0" path="res://assets/game_theme.theme" id="2_2xlck"]
+[ext_resource type="ButtonGroup" uid="uid://cbcp080rn5oc6" path="res://src/ui/main_menu_button_group.res" id="4_snloe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dc5ls"]
 font = ExtResource("1_wrunk")
-font_size = 56
+font_size = 48
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -14,7 +15,7 @@ shadow_color = Color(0, 0, 0, 0.435294)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_4fgbf")
-test_scene = "res://src/game_modes/test.tscn"
+pvp_scene = "res://src/game_modes/pvp_mode.tscn"
 
 [node name="MainMenuLayer" type="CanvasLayer" parent="."]
 
@@ -34,10 +35,10 @@ anchor_bottom = 0.25
 grow_horizontal = 2
 
 [node name="TitleLabel" type="Label" parent="MainMenuLayer/Control/TitleContainer"]
-offset_left = 195.0
-offset_top = 38.0
-offset_right = 764.0
-offset_bottom = 97.0
+offset_left = 235.0
+offset_top = 42.0
+offset_right = 724.0
+offset_bottom = 93.0
 text = "Pong Again"
 label_settings = SubResource("LabelSettings_dc5ls")
 horizontal_alignment = 1
@@ -82,6 +83,7 @@ focus_neighbor_bottom = NodePath("../OptionsButton")
 focus_next = NodePath("../OptionsButton")
 theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
+button_group = ExtResource("4_snloe")
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -96,6 +98,7 @@ focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../PlayButton")
 theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
+button_group = ExtResource("4_snloe")
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -108,6 +111,7 @@ focus_neighbor_top = NodePath("../OptionsButton")
 focus_previous = NodePath("../OptionsButton")
 theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
+button_group = ExtResource("4_snloe")
 text = "Quit"
 
 [node name="LabelContainer" type="HBoxContainer" parent="MainMenuLayer/Control"]
@@ -128,5 +132,122 @@ text = "v0.0.9.7"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="GameChoiceLayer" type="CanvasLayer" parent="."]
+offset = Vector2(960, 0)
+transform = Transform2D(1, 0, 0, 1, 960, 0)
+
+[node name="Control" type="Control" parent="GameChoiceLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2xlck")
+
+[node name="TitleContainer" type="CenterContainer" parent="GameChoiceLayer/Control"]
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.25
+grow_horizontal = 2
+
+[node name="TitleLabel" type="Label" parent="GameChoiceLayer/Control/TitleContainer"]
+offset_left = 235.0
+offset_top = 15.0
+offset_right = 724.0
+offset_bottom = 66.0
+text = "Game Modes"
+label_settings = SubResource("LabelSettings_dc5ls")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ButtonContainer" type="CenterContainer" parent="GameChoiceLayer/Control"]
+anchors_preset = -1
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.95
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="GameChoiceLayer/Control/ButtonContainer"]
+custom_minimum_size = Vector2(360, 280)
+offset_left = 300.0
+offset_top = 49.0
+offset_right = 660.0
+offset_bottom = 329.0
+theme = ExtResource("2_2xlck")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer"]
+offset_right = 360.0
+offset_bottom = 280.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer"]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 328.0
+offset_bottom = 248.0
+theme_override_constants/separation = 8
+
+[node name="PvPButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+offset_right = 296.0
+offset_bottom = 66.0
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../PvAIButton")
+focus_next = NodePath("../PvAIButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "PvP"
+
+[node name="PvAIButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+offset_top = 74.0
+offset_right = 296.0
+offset_bottom = 141.0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../PvPButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+focus_next = NodePath("../BackButton")
+focus_previous = NodePath("../PvPButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "PvCPU"
+
+[node name="BackButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+offset_top = 149.0
+offset_right = 296.0
+offset_bottom = 216.0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../PvAIButton")
+focus_previous = NodePath("../PvAIButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="LabelContainer" type="HBoxContainer" parent="GameChoiceLayer/Control"]
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VersionLabel" type="Label" parent="GameChoiceLayer/Control/LabelContainer"]
+offset_top = 2.0
+offset_right = 135.0
+offset_bottom = 24.0
+text = "v0.0.9.7"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [connection signal="pressed" from="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/PvPButton" to="." method="_on_pvp_button_pressed"]
+[connection signal="pressed" from="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/PvAIButton" to="." method="_on_pvai_button_pressed"]
+[connection signal="pressed" from="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

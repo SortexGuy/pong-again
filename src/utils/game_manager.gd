@@ -5,15 +5,16 @@ signal _goal_reached(right: bool)
 
 enum GAME_MODE {TEST = -1, PVP, PVAI}
 
-#@export_file("*.tscn,*.scn") var main_menu_scene: String
 @export var pausable: bool = true
 @export var goal: int = 2 # (int, 1, 20)
-@onready var ball: Ball = $%Ball
-@onready var score_p1 : int = 0
-@onready var score_p2 : int = 0
 
 var current_game_mode : int = GAME_MODE.TEST
 var players_in_game : int = 0
+
+@onready var ball: Ball = $%Ball
+@onready var score_p1 : int = 0
+@onready var score_p2 : int = 0
+@onready var gui_layer: CanvasLayer = $GuiLayer
 
 var gui : Control = null : 
 	set(node):
@@ -30,15 +31,18 @@ func _ready() -> void:
 func _on_ball_scored(right: bool):
 	if right:
 		score_p1 += 1
-#		gui.p1_label.text = str(score_p1)
 	else:
 		score_p2 += 1
-#		gui.p2_label.text = str(score_p2)
+	gui_layer.score_changed.emit(score_p1, score_p2)
 	if score_p1 == goal or score_p2 == goal:
 		_goal_reached.emit(not right)
 		ball._stop()
 		return
 	ball._reset()
 
-func _on_goal_reached(_right: bool) -> void:
-	pass
+func _on_goal_reached(right: bool) -> void:
+	if right:
+		print_rich("[color=red][b]Player 2 or AI wins![/b][/color]")
+	else:
+		print_rich("[color=red][b]Player 1 wins![/b][/color]")
+	pausable = false

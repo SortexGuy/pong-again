@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-signal reseted
+#signal reseted
 
 const SPEED = 300.0
 enum PlayerType {
@@ -14,25 +14,25 @@ enum PlayerType {
 @export var init_pos: Vector2 = Vector2(480, 270)
 
 @onready var audio_sp: AudioStreamPlayer2D = %AudioSP2D
-@onready var reseting: bool = false
+#@onready var reseting: bool = false
 
 func  _ready() -> void:
 	position = init_pos
 
 func _physics_process(_delta: float) -> void:
-	if not reseting:
-		var input: Dictionary = _get_input()
-		var direction: float = input.get("dir", 0.0)
-		if direction:
-			var target_y: float = direction * SPEED
-			velocity.y = move_toward(velocity.y, target_y, SPEED*.2)
-		else:
-			velocity.y = move_toward(velocity.y, 0, SPEED)
+#	if not reseting:
+	var input: Dictionary = _get_input()
+	var direction: float = input.get("dir", 0.0)
+	if direction:
+		var target_y: float = direction * SPEED
+		velocity.y = move_toward(velocity.y, target_y, SPEED*.2)
 	else:
-		if position.y == init_pos.y: 
-			reseting = false
-			reseted.emit()
-		move_toward(velocity.y, init_pos.y, SPEED*.15)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+#	else:
+#		if position.y == init_pos.y: 
+#			reseting = false
+#			reseted.emit()
+#		move_toward(velocity.y, init_pos.y, SPEED*.15)
 	var collided: bool = move_and_slide()
 	if position.x != init_pos.x: position.x = init_pos.x
 	
@@ -55,5 +55,5 @@ func _get_input() -> Dictionary:
 			v_dir = 0.0
 	return { "dir": v_dir }
 
-func reset(_right: bool) -> void:
-	reseting = true
+#func reset(_right: bool) -> void:
+#	reseting = true

@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckywn2fgwnu6e"]
+
+[ext_resource type="PackedScene" uid="uid://deim3rm6ie4sf" path="res://src/ui/pause_menu_layer.tscn" id="1_o83yh"]
+[ext_resource type="Script" path="res://src/game_modes/pvp_mode.gd" id="1_ygs05"]
+[ext_resource type="PackedScene" uid="uid://d0e7243bryr23" path="res://src/ui/gui_layer.tscn" id="2_ffxv3"]
+[ext_resource type="Script" path="res://src/utils/wall_generator.gd" id="3_gdq0t"]
+[ext_resource type="PackedScene" uid="uid://cmmpnnvsrjrv8" path="res://src/ui/win_screen_layer.tscn" id="4_bhywb"]
+[ext_resource type="Texture2D" uid="uid://i2k221p0rwc7" path="res://assets/textures/PongWallUpDown.png" id="5_4fm85"]
+[ext_resource type="PackedScene" uid="uid://dihj5r02f5xnk" path="res://src/characters/ball.tscn" id="5_8vsrq"]
+[ext_resource type="PackedScene" uid="uid://cr3cdjgxbsfwd" path="res://src/characters/player.tscn" id="6_5ewnn"]
+
+[node name="PvPMode" type="Node2D"]
+script = ExtResource("1_ygs05")
+
+[node name="PauseMenuLayer" parent="." instance=ExtResource("1_o83yh")]
+
+[node name="GuiLayer" parent="." instance=ExtResource("2_ffxv3")]
+
+[node name="WinScreenLayer" parent="." instance=ExtResource("4_bhywb")]
+
+[node name="WallGenerator" type="Node2D" parent="."]
+script = ExtResource("3_gdq0t")
+up_down_texture = ExtResource("5_4fm85")
+
+[node name="Ball" parent="." instance=ExtResource("5_8vsrq")]
+unique_name_in_owner = true
+position = Vector2(480, 270)
+
+[node name="PlayerL" parent="." instance=ExtResource("6_5ewnn")]
+unique_name_in_owner = true
+position = Vector2(168, 270)
+init_pos = Vector2(120, 270)
+
+[node name="PlayerR" parent="." instance=ExtResource("6_5ewnn")]
+unique_name_in_owner = true
+position = Vector2(843, 256)
+_id = 1
+init_pos = Vector2(840, 270)

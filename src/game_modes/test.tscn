@@ -1,18 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1mbbg7k1bnyo"]
+[gd_scene load_steps=8 format=3 uid="uid://cvobit81bherq"]
 
 [ext_resource type="PackedScene" uid="uid://dihj5r02f5xnk" path="res://src/characters/ball.tscn" id="1_lk3vk"]
 [ext_resource type="Script" path="res://src/game_modes/test.gd" id="1_ll8gj"]
 [ext_resource type="Script" path="res://src/utils/wall_generator.gd" id="1_wad4m"]
 [ext_resource type="PackedScene" uid="uid://cr3cdjgxbsfwd" path="res://src/characters/player.tscn" id="2_bipcx"]
-[ext_resource type="PackedScene" uid="uid://bdmxm2pfpl6ji" path="res://src/ui/gui_layer.tscn" id="2_qfuxv"]
+[ext_resource type="PackedScene" uid="uid://deim3rm6ie4sf" path="res://src/ui/pause_menu_layer.tscn" id="2_cidxo"]
+[ext_resource type="PackedScene" uid="uid://d0e7243bryr23" path="res://src/ui/gui_layer.tscn" id="3_vltor"]
 [ext_resource type="Texture2D" uid="uid://i2k221p0rwc7" path="res://assets/textures/PongWallUpDown.png" id="4_3tmnm"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_ll8gj")
-goal = 16
+goal = 3
 
-[node name="GuiLayer" parent="." instance=ExtResource("2_qfuxv")]
-layer = 25
+[node name="PauseMenuLayer" parent="." instance=ExtResource("2_cidxo")]
+
+[node name="GuiLayer" parent="." instance=ExtResource("3_vltor")]
 
 [node name="WallGenerator" type="Node2D" parent="."]
 script = ExtResource("1_wad4m")
@@ -32,5 +34,3 @@ unique_name_in_owner = true
 position = Vector2(894, 270)
 _id = 1
 init_pos = Vector2(840, 270)
-
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
