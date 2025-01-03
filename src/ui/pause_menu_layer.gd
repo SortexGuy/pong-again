@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export_file("*.tscn,*.scn") var main_menu_scene: String
+@export_file("*.tscn","*.scn") var main_menu_scene: String
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var resume_button: Button = %ResumeButton

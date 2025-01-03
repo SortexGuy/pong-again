@@ -6,14 +6,14 @@ signal goal_touched(right: bool)
 @export var up_down_texture: Texture2D
 
 @export_group("Walls Collision", "walls_")
-@export_flags_2d_physics @onready
+@export_flags_2d_physics
 var walls_bit_layer: int = 1
-@export_flags_2d_physics @onready
+@export_flags_2d_physics
 var walls_bit_mask: int = 2+4
 @export_group("Area2D Collision", "area_")
-@export_flags_2d_physics @onready
+@export_flags_2d_physics
 var area_bit_layer: int = 8
-@export_flags_2d_physics @onready
+@export_flags_2d_physics
 var area_bit_mask: int = 4
 
 func _ready():

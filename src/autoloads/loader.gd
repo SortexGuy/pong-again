@@ -26,3 +26,9 @@ func goto_scene(scene_path: String) -> void:
 	var _x: = ResourceLoader.load_threaded_request(curr_scn_path)
 	root = get_tree().root
 	curr_scene = root.get_child(root.get_child_count()-1)
+
+func reload_scene() -> void:
+	if not loading: loading = true
+	var _x: = ResourceLoader.load_threaded_request(curr_scn_path)
+	root = get_tree().root
+	curr_scene = root.get_child(root.get_child_count()-1)

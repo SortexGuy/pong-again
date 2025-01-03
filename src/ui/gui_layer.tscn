@@ -28,7 +28,7 @@ grow_vertical = 2
 theme = ExtResource("1_yebih")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-anchors_preset = -1
+layout_mode = 0
 anchor_top = 0.06
 anchor_right = 1.0
 anchor_bottom = 0.06
@@ -38,9 +38,7 @@ alignment = 1
 
 [node name="P1ScoreLabel" type="Label" parent="Control/HBoxContainer"]
 unique_name_in_owner = true
-offset_left = 395.0
-offset_right = 443.0
-offset_bottom = 51.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "0"
 label_settings = SubResource("LabelSettings_hdtdj")
@@ -48,17 +46,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="Control/HBoxContainer"]
-offset_left = 447.0
-offset_right = 511.0
-offset_bottom = 51.0
+layout_mode = 2
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hsvpt")
 
 [node name="P2ScoreLabel" type="Label" parent="Control/HBoxContainer"]
 unique_name_in_owner = true
-offset_left = 515.0
-offset_right = 564.0
-offset_bottom = 51.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "0
 "

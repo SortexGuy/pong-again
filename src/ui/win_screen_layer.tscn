@@ -1,15 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmmpnnvsrjrv8"]
+[gd_scene load_steps=7 format=3 uid="uid://cmmpnnvsrjrv8"]
 
 [ext_resource type="Script" path="res://src/ui/win_screen_layer.gd" id="1_8wa6s"]
 [ext_resource type="FontVariation" uid="uid://cy36dde3oif13" path="res://assets/fonts/PressStart2P_FontVar.res" id="1_y2jkg"]
 [ext_resource type="Theme" uid="uid://c485aq3nvu4j0" path="res://assets/game_theme.theme" id="2_hcib5"]
-[ext_resource type="ButtonGroup" uid="uid://cbcp080rn5oc6" path="res://src/ui/main_menu_button_group.res" id="3_8gwr4"]
 [ext_resource type="Shader" path="res://assets/shaders/pause_blur.gdshader" id="5_4plsd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1i1go"]
 shader = ExtResource("5_4plsd")
-shader_parameter/blur = 1.0
-shader_parameter/brightness = 1.0
+shader_parameter/blur = 0.0
+shader_parameter/brightness = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_wbmiw"]
 font = ExtResource("1_y2jkg")
@@ -57,10 +56,6 @@ grow_horizontal = 2
 [node name="TitleLabel" type="Label" parent="ContentLayer/Control/TitleContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 113.0
-offset_top = 42.0
-offset_right = 847.0
-offset_bottom = 93.0
 text = "Player 1 wins!!"
 label_settings = SubResource("LabelSettings_wbmiw")
 horizontal_alignment = 1
@@ -77,16 +72,10 @@ grow_horizontal = 2
 [node name="PanelContainer" type="PanelContainer" parent="ContentLayer/Control/ButtonContainer"]
 custom_minimum_size = Vector2(360, 280)
 layout_mode = 2
-offset_left = 300.0
-offset_top = 49.0
-offset_right = 660.0
-offset_bottom = 329.0
 theme = ExtResource("2_hcib5")
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentLayer/Control/ButtonContainer/PanelContainer"]
 layout_mode = 2
-offset_right = 360.0
-offset_bottom = 280.0
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
@@ -94,33 +83,22 @@ theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentLayer/Control/ButtonContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 328.0
-offset_bottom = 248.0
 theme_override_constants/separation = 8
 
 [node name="RestartButton" type="Button" parent="ContentLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_right = 296.0
-offset_bottom = 104.0
 size_flags_vertical = 3
 theme = ExtResource("2_hcib5")
 theme_override_font_sizes/font_size = 24
-button_group = ExtResource("3_8gwr4")
-text = "Play"
+text = "Restart"
 
 [node name="QuitButton" type="Button" parent="ContentLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_top = 112.0
-offset_right = 296.0
-offset_bottom = 216.0
 size_flags_vertical = 3
 theme = ExtResource("2_hcib5")
 theme_override_font_sizes/font_size = 24
-button_group = ExtResource("3_8gwr4")
 text = "Quit"
 
 [connection signal="pressed" from="ContentLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
