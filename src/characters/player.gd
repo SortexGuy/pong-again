@@ -40,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 	if (not get_last_slide_collision().get_collider() \
 		is StaticBody2D or audio_sp.playing) or \
 		velocity.y == 0: return
-	audio_sp.pitch_scale = randf_range(.95, 1.05)
+	audio_sp.pitch_scale = randf_range(.95, 1.1)
 	audio_sp.play()
 
 func _get_input() -> Dictionary:

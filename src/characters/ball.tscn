@@ -35,6 +35,7 @@ debug_color = Color(0, 0.796078, 0, 0.145098)
 [node name="AudioSP2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_6f266")
+volume_db = 14.0
 max_distance = 1920.0
 attenuation = 3.0
 max_polyphony = 2

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PongAgain"
-config/version="0.0.9.9"
+config/version="0.0.10.0"
 run/main_scene="res://src/ui/main_menu.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.svg"
@@ -27,6 +27,10 @@ window/size/viewport_width=960
 window/size/viewport_height=540
 window/stretch/mode="canvas_items"
 window/handheld/orientation=4
+
+[dotnet]
+
+project/assembly_name="PongAgain"
 
 [input]
 
@@ -62,4 +66,6 @@ p2_move_down={
 
 textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.227451, 0.133333, 0.301961, 1)

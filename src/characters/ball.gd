@@ -109,10 +109,10 @@ func _on_player_entered(hitbox: Area2D) -> void:
 		normal = (Vector2.RIGHT +
 			(collider.velocity.normalized() * .25)).normalized()
 	
-	print("Normal: " + str(normal) + ", Velocity: " + str(velocity))
+	#print("Normal: " + str(normal) + ", Velocity: " + str(velocity))
 	velocity = velocity.bounce(normal)
 	velocity += velocity.normalized() * MIN_SPEED*.125
-	print("Velocity bounced: " + str(velocity))
+	#print("Velocity bounced: " + str(velocity))
 	
-	audio_sp.pitch_scale = randf_range(1.1, 1.2)
+	audio_sp.pitch_scale = randf_range(1.0, 1.2)
 	audio_sp.play()

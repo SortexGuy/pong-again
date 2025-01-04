@@ -7,6 +7,7 @@ enum GAME_MODE {TEST = -1, PVP, PVAI}
 
 @export var pausable: bool = true
 @export var goal: int = 2 # (int, 1, 20)
+@onready var MUSIC_BUS_ID := AudioServer.get_bus_index("Music")
 
 var current_game_mode : int = GAME_MODE.TEST
 var players_in_game : int = 0
@@ -23,6 +24,9 @@ var gui : Control = null :
 		gui.p2_label.text = str(score_p2)
 
 func _ready() -> void:
+	var effect := AudioServer.get_bus_effect(MUSIC_BUS_ID, 1)
+	if effect is AudioEffectLowPassFilter:
+		effect.cutoff_hz = 20500
 	var wall_gen := $WallGenerator as WallGenerator
 	wall_gen.goal_touched.connect(_on_ball_scored)
 	_goal_reached.connect(_on_goal_reached)

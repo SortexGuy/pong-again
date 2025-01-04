@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqd7ypxart2e3"]
+[gd_scene load_steps=11 format=3 uid="uid://bqd7ypxart2e3"]
 
 [ext_resource type="Script" path="res://src/ui/main_menu.gd" id="1_4fgbf"]
 [ext_resource type="FontVariation" uid="uid://cy36dde3oif13" path="res://assets/fonts/PressStart2P_FontVar.res" id="1_wrunk"]
 [ext_resource type="Theme" uid="uid://c485aq3nvu4j0" path="res://assets/game_theme.theme" id="2_2xlck"]
+[ext_resource type="AudioStream" uid="uid://ck05eprnujkvk" path="res://assets/music/Sketchbook 2024-02-28_01.ogg" id="4_ra5nh"]
+[ext_resource type="AudioStream" uid="uid://b86w2vwnk3sqd" path="res://assets/audio/click.wav" id="4_sx4xi"]
+[ext_resource type="AudioStream" uid="uid://bfb5ec57l2q1s" path="res://assets/audio/random.wav" id="4_yq03q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dc5ls"]
 font = ExtResource("1_wrunk")
@@ -23,6 +26,33 @@ font_size = 20
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_4fgbf")
 pvp_scene = "res://src/game_modes/pvp_mode.tscn"
+
+[node name="VersionLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="VersionLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2xlck")
+
+[node name="LabelContainer" type="HBoxContainer" parent="VersionLayer/Control"]
+layout_mode = 0
+anchor_left = 0.02
+anchor_top = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VersionLabel" type="Label" parent="VersionLayer/Control/LabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "v0.0.9.7"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MainMenuLayer" type="CanvasLayer" parent="."]
 offset = Vector2(0, 540)
@@ -105,22 +135,6 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
-[node name="LabelContainer" type="HBoxContainer" parent="MainMenuLayer/Control"]
-layout_mode = 0
-anchor_left = 0.02
-anchor_top = 0.95
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="VersionLabel" type="Label" parent="MainMenuLayer/Control/LabelContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "v0.0.9.7"
-horizontal_alignment = 2
-vertical_alignment = 1
-
 [node name="GameChoiceLayer" type="CanvasLayer" parent="."]
 offset = Vector2(960, 0)
 transform = Transform2D(1, 0, 0, 1, 960, 0)
@@ -191,6 +205,7 @@ focus_next = NodePath("../BackButton")
 focus_previous = NodePath("../PvPButton")
 theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
+disabled = true
 text = "PvCPU"
 
 [node name="BackButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -202,21 +217,6 @@ focus_previous = NodePath("../PvAIButton")
 theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Back"
-
-[node name="LabelContainer" type="HBoxContainer" parent="GameChoiceLayer/Control"]
-layout_mode = 0
-anchor_left = 0.02
-anchor_top = 0.95
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="VersionLabel" type="Label" parent="GameChoiceLayer/Control/LabelContainer"]
-layout_mode = 2
-text = "v0.0.9.7"
-horizontal_alignment = 2
-vertical_alignment = 1
 
 [node name="OptionsLayer" type="CanvasLayer" parent="."]
 offset = Vector2(-960, 0)
@@ -374,26 +374,40 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OptionsBackButton" type="Button" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
-[node name="LabelContainer" type="HBoxContainer" parent="OptionsLayer/Control"]
-layout_mode = 0
-anchor_left = 0.02
-anchor_top = 0.95
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="SFXSP2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_yq03q")
+volume_db = 6.0
+max_distance = 1920.0
+attenuation = 3.0
+max_polyphony = 2
+panning_strength = 1.75
+bus = &"SFX"
+area_mask = 3
 
-[node name="VersionLabel" type="Label" parent="OptionsLayer/Control/LabelContainer"]
-layout_mode = 2
-text = "v0.0.9.7"
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="SliderSFXSP2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_sx4xi")
+volume_db = 6.0
+max_distance = 1920.0
+attenuation = 3.0
+max_polyphony = 2
+panning_strength = 1.75
+bus = &"SFX"
+area_mask = 3
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ra5nh")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

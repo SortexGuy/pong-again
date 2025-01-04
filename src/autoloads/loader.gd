@@ -14,7 +14,8 @@ func _process(_delta: float) -> void:
 	scene_load_status = ResourceLoader.load_threaded_get_status(curr_scn_path)
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
 		var scene: PackedScene = ResourceLoader.load_threaded_get(curr_scn_path)
-		root.add_child(scene.instantiate(1))
+		var instance := await scene.instantiate()
+		root.add_child(instance)
 		curr_scene.queue_free()
 		get_tree().paused = false
 		loading = false

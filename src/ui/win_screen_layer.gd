@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-signal player_won(player2: bool)
 
 @export_file("*.tscn","*.scn") var main_menu_scene: String
 
@@ -8,9 +7,6 @@ signal player_won(player2: bool)
 @onready var content_layer: CanvasLayer = %ContentLayer
 @onready var restart_button: Button = %RestartButton
 @onready var title_label: Label = %TitleLabel
-
-func _ready() -> void:
-	player_won.connect(on_game_ended)
 
 func on_game_ended(p2: bool) -> void:
 	var player = "1"

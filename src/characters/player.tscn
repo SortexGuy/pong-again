@@ -35,7 +35,7 @@ debug_color = Color(0.847059, 0.133333, 0, 0.454902)
 [node name="AudioSP2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_63bmr")
-volume_db = -2.0
+volume_db = 16.0
 attenuation = 3.0
 max_polyphony = 2
 panning_strength = 1.5

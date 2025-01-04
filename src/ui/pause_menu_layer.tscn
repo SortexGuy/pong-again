@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://deim3rm6ie4sf"]
+[gd_scene load_steps=16 format=3 uid="uid://deim3rm6ie4sf"]
 
 [ext_resource type="Script" path="res://src/ui/pause_menu_layer.gd" id="1_txh50"]
 [ext_resource type="Shader" path="res://assets/shaders/pause_blur.gdshader" id="2_xa214"]
 [ext_resource type="Theme" uid="uid://c485aq3nvu4j0" path="res://assets/game_theme.theme" id="3_5l66r"]
 [ext_resource type="FontFile" uid="uid://dmjqgqkcftiq2" path="res://assets/fonts/PressStart2P.ttf" id="4_xai1f"]
+[ext_resource type="AudioStream" uid="uid://bfb5ec57l2q1s" path="res://assets/audio/random.wav" id="5_p5kkd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fmpqs"]
 shader = ExtResource("2_xa214")
@@ -228,6 +229,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_5l66r")
 
 [node name="PanelContainer" type="PanelContainer" parent="ContentsLayer/CenterContainer"]
 custom_minimum_size = Vector2(320, 270)
@@ -268,6 +270,17 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
 text = "Quit"
+
+[node name="SFXSP2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_p5kkd")
+volume_db = 6.0
+max_distance = 1920.0
+attenuation = 3.0
+max_polyphony = 2
+panning_strength = 1.75
+bus = &"SFX"
+area_mask = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
