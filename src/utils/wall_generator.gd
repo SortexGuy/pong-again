@@ -3,6 +3,8 @@ extends Node2D
 
 signal goal_touched(right: bool)
 
+const THICKNESS = 60.0
+
 @export var up_down_texture: Texture2D
 
 @export_group("Walls Collision", "walls_")
@@ -34,8 +36,8 @@ func _ready():
 		var coll_shape_node := CollisionShape2D.new()
 		coll_shape_node.shape = RectangleShape2D.new()
 		# Calculate CollShape size
-		var x_size: float = 60
-		var y_size: float = 60 
+		var x_size: float = THICKNESS
+		var y_size: float = THICKNESS
 		if dir.x == 0: x_size += Globals.vp_size.x
 		if dir.y == 0: y_size += Globals.vp_size.y
 		coll_shape_node.shape.size = Vector2(x_size, y_size)

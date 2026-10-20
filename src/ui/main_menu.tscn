@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqd7ypxart2e3"]
+[gd_scene format=3 uid="uid://bqd7ypxart2e3"]
 
-[ext_resource type="Script" path="res://src/ui/main_menu.gd" id="1_4fgbf"]
+[ext_resource type="Script" uid="uid://c2j0t2g1i4kw1" path="res://src/ui/main_menu.gd" id="1_4fgbf"]
 [ext_resource type="FontVariation" uid="uid://cy36dde3oif13" path="res://assets/fonts/PressStart2P_FontVar.res" id="1_wrunk"]
 [ext_resource type="Theme" uid="uid://c485aq3nvu4j0" path="res://assets/game_theme.theme" id="2_2xlck"]
 [ext_resource type="AudioStream" uid="uid://ck05eprnujkvk" path="res://assets/music/Sketchbook 2024-02-28_01.ogg" id="4_ra5nh"]
@@ -23,14 +23,14 @@ font_size = 20
 [sub_resource type="LabelSettings" id="LabelSettings_gfn1q"]
 font_size = 20
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" unique_id=1741466839]
 script = ExtResource("1_4fgbf")
 pvp_scene = "res://src/game_modes/pvp_mode.tscn"
 pvai_scene = "res://src/game_modes/pvai_mode.tscn"
 
-[node name="VersionLayer" type="CanvasLayer" parent="."]
+[node name="VersionLayer" type="CanvasLayer" parent="." unique_id=738956770]
 
-[node name="Control" type="Control" parent="VersionLayer"]
+[node name="Control" type="Control" parent="VersionLayer" unique_id=1232807969]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2xlck")
 
-[node name="LabelContainer" type="HBoxContainer" parent="VersionLayer/Control"]
+[node name="LabelContainer" type="HBoxContainer" parent="VersionLayer/Control" unique_id=510768856]
 layout_mode = 0
 anchor_left = 0.02
 anchor_top = 0.95
@@ -48,18 +48,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VersionLabel" type="Label" parent="VersionLayer/Control/LabelContainer"]
+[node name="VersionLabel" type="Label" parent="VersionLayer/Control/LabelContainer" unique_id=1557597973]
 unique_name_in_owner = true
 layout_mode = 2
-text = "v0.0.9.7"
+text = "v0.0.97"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MainMenuLayer" type="CanvasLayer" parent="."]
+[node name="MainMenuLayer" type="CanvasLayer" parent="." unique_id=1184288342]
 offset = Vector2(0, 540)
 transform = Transform2D(1, 0, 0, 1, 0, 540)
 
-[node name="Control" type="Control" parent="MainMenuLayer"]
+[node name="Control" type="Control" parent="MainMenuLayer" unique_id=204879685]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,43 +68,43 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2xlck")
 
-[node name="TitleContainer" type="CenterContainer" parent="MainMenuLayer/Control"]
+[node name="TitleContainer" type="CenterContainer" parent="MainMenuLayer/Control" unique_id=2145130848]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.25
 grow_horizontal = 2
 
-[node name="TitleLabel" type="Label" parent="MainMenuLayer/Control/TitleContainer"]
+[node name="TitleLabel" type="Label" parent="MainMenuLayer/Control/TitleContainer" unique_id=1717624193]
 layout_mode = 2
 text = "Pong Again"
 label_settings = SubResource("LabelSettings_dc5ls")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonContainer" type="CenterContainer" parent="MainMenuLayer/Control"]
+[node name="ButtonContainer" type="CenterContainer" parent="MainMenuLayer/Control" unique_id=329604647]
 layout_mode = 0
 anchor_top = 0.25
 anchor_right = 1.0
 anchor_bottom = 0.95
 grow_horizontal = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MainMenuLayer/Control/ButtonContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuLayer/Control/ButtonContainer" unique_id=829327694]
 custom_minimum_size = Vector2(360, 280)
 layout_mode = 2
 theme = ExtResource("2_2xlck")
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer" unique_id=1810845248]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer" unique_id=358540510]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="PlayButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1239280180]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -114,7 +114,7 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1110612296]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -126,7 +126,7 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MainMenuLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=536763448]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -136,11 +136,11 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
-[node name="GameChoiceLayer" type="CanvasLayer" parent="."]
+[node name="GameChoiceLayer" type="CanvasLayer" parent="." unique_id=2047181778]
 offset = Vector2(960, 0)
 transform = Transform2D(1, 0, 0, 1, 960, 0)
 
-[node name="Control" type="Control" parent="GameChoiceLayer"]
+[node name="Control" type="Control" parent="GameChoiceLayer" unique_id=1905936804]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,44 +149,44 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2xlck")
 
-[node name="TitleContainer" type="CenterContainer" parent="GameChoiceLayer/Control"]
+[node name="TitleContainer" type="CenterContainer" parent="GameChoiceLayer/Control" unique_id=1368253223]
 layout_mode = 0
 anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.25
 grow_horizontal = 2
 
-[node name="TitleLabel" type="Label" parent="GameChoiceLayer/Control/TitleContainer"]
+[node name="TitleLabel" type="Label" parent="GameChoiceLayer/Control/TitleContainer" unique_id=1043283979]
 layout_mode = 2
 text = "Game Modes"
 label_settings = SubResource("LabelSettings_dc5ls")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="ButtonContainer" type="CenterContainer" parent="GameChoiceLayer/Control"]
+[node name="ButtonContainer" type="CenterContainer" parent="GameChoiceLayer/Control" unique_id=199142056]
 layout_mode = 0
 anchor_top = 0.25
 anchor_right = 1.0
 anchor_bottom = 0.95
 grow_horizontal = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="GameChoiceLayer/Control/ButtonContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="GameChoiceLayer/Control/ButtonContainer" unique_id=1778835615]
 custom_minimum_size = Vector2(360, 280)
 layout_mode = 2
 theme = ExtResource("2_2xlck")
 
-[node name="MarginContainer" type="MarginContainer" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer" unique_id=2142820392]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer" unique_id=1021922935]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="PvPButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PvPButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=55557290]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -196,7 +196,7 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "PvP"
 
-[node name="PvAIButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PvAIButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=823624842]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -208,7 +208,7 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "PvCPU"
 
-[node name="BackButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=817859067]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -218,11 +218,11 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
-[node name="DifficultyLayer" type="CanvasLayer" parent="."]
+[node name="DifficultyLayer" type="CanvasLayer" parent="." unique_id=962115843]
 offset = Vector2(960, 0)
 transform = Transform2D(1, 0, 0, 1, 960, 0)
 
-[node name="Control" type="Control" parent="DifficultyLayer"]
+[node name="Control" type="Control" parent="DifficultyLayer" unique_id=372699717]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,44 +231,44 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2xlck")
 
-[node name="TitleContainer" type="CenterContainer" parent="DifficultyLayer/Control"]
+[node name="TitleContainer" type="CenterContainer" parent="DifficultyLayer/Control" unique_id=1059961628]
 layout_mode = 0
 anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.25
 grow_horizontal = 2
 
-[node name="TitleLabel" type="Label" parent="DifficultyLayer/Control/TitleContainer"]
+[node name="TitleLabel" type="Label" parent="DifficultyLayer/Control/TitleContainer" unique_id=100197182]
 layout_mode = 2
 text = "Difficulty"
 label_settings = SubResource("LabelSettings_dc5ls")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="ButtonContainer" type="CenterContainer" parent="DifficultyLayer/Control"]
+[node name="ButtonContainer" type="CenterContainer" parent="DifficultyLayer/Control" unique_id=842675153]
 layout_mode = 0
 anchor_top = 0.25
 anchor_right = 1.0
 anchor_bottom = 0.95
 grow_horizontal = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="DifficultyLayer/Control/ButtonContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="DifficultyLayer/Control/ButtonContainer" unique_id=960696031]
 custom_minimum_size = Vector2(360, 340)
 layout_mode = 2
 theme = ExtResource("2_2xlck")
 
-[node name="MarginContainer" type="MarginContainer" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer" unique_id=1009076105]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer" unique_id=337127197]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="EasyButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="EasyButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=297925011]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -278,7 +278,7 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Easy"
 
-[node name="NormalButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="NormalButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=793647146]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -290,7 +290,7 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Normal"
 
-[node name="HardButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HardButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=740117137]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -302,7 +302,7 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Hard"
 
-[node name="DifficultyBackButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="DifficultyBackButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=134624813]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -312,11 +312,11 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
-[node name="OptionsLayer" type="CanvasLayer" parent="."]
+[node name="OptionsLayer" type="CanvasLayer" parent="." unique_id=770738433]
 offset = Vector2(-960, 0)
 transform = Transform2D(1, 0, 0, 1, -960, 0)
 
-[node name="Control" type="Control" parent="OptionsLayer"]
+[node name="Control" type="Control" parent="OptionsLayer" unique_id=1213400488]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -325,60 +325,60 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2xlck")
 
-[node name="TitleContainer" type="CenterContainer" parent="OptionsLayer/Control"]
+[node name="TitleContainer" type="CenterContainer" parent="OptionsLayer/Control" unique_id=381479611]
 layout_mode = 0
 anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.25
 grow_horizontal = 2
 
-[node name="TitleLabel" type="Label" parent="OptionsLayer/Control/TitleContainer"]
+[node name="TitleLabel" type="Label" parent="OptionsLayer/Control/TitleContainer" unique_id=2021196387]
 layout_mode = 2
 text = "Options"
 label_settings = SubResource("LabelSettings_dc5ls")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="ButtonContainer" type="CenterContainer" parent="OptionsLayer/Control"]
+[node name="ButtonContainer" type="CenterContainer" parent="OptionsLayer/Control" unique_id=1359889208]
 layout_mode = 0
 anchor_top = 0.25
 anchor_right = 1.0
 anchor_bottom = 0.95
 grow_horizontal = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="OptionsLayer/Control/ButtonContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="OptionsLayer/Control/ButtonContainer" unique_id=1453181455]
 custom_minimum_size = Vector2(800, 280)
 layout_mode = 2
 theme = ExtResource("2_2xlck")
 
-[node name="MarginContainer" type="MarginContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer" unique_id=1968585326]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer" unique_id=1849603577]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="MasterSliderContainer" type="HBoxContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MasterSliderContainer" type="HBoxContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1616898711]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer"]
+[node name="Label" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer" unique_id=1307138963]
 layout_mode = 2
 text = "Master Vol"
 label_settings = SubResource("LabelSettings_q0inr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer"]
+[node name="VSeparator" type="VSeparator" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer" unique_id=791941305]
 layout_mode = 2
 theme_override_constants/separation = 44
 theme_override_styles/separator = SubResource("StyleBoxEmpty_fuwdh")
 
-[node name="MasterSlider" type="HSlider" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer"]
+[node name="MasterSlider" type="HSlider" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer" unique_id=485336662]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 20)
 layout_mode = 2
@@ -389,7 +389,7 @@ max_value = 1.0
 step = 0.02
 value = 1.0
 
-[node name="MasterPercentLabel" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer"]
+[node name="MasterPercentLabel" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer" unique_id=518099019]
 unique_name_in_owner = true
 layout_mode = 2
 text = "100%"
@@ -397,23 +397,23 @@ label_settings = SubResource("LabelSettings_gfn1q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SFXSliderContainer" type="HBoxContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SFXSliderContainer" type="HBoxContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=370380319]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer"]
+[node name="Label" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer" unique_id=478389573]
 layout_mode = 2
 text = "Sound FX Vol"
 label_settings = SubResource("LabelSettings_q0inr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer"]
+[node name="VSeparator" type="VSeparator" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer" unique_id=1245087085]
 layout_mode = 2
 theme_override_constants/separation = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_fuwdh")
 
-[node name="SFXSlider" type="HSlider" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer"]
+[node name="SFXSlider" type="HSlider" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer" unique_id=409522000]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 20)
 layout_mode = 2
@@ -424,7 +424,7 @@ max_value = 1.0
 step = 0.02
 value = 1.0
 
-[node name="SFXPercentLabel" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer"]
+[node name="SFXPercentLabel" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer" unique_id=857971128]
 unique_name_in_owner = true
 layout_mode = 2
 text = "100%"
@@ -432,23 +432,23 @@ label_settings = SubResource("LabelSettings_gfn1q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicSliderContainer" type="HBoxContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MusicSliderContainer" type="HBoxContainer" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=267417837]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer"]
+[node name="Label" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer" unique_id=338739637]
 layout_mode = 2
 text = "Music Vol"
 label_settings = SubResource("LabelSettings_q0inr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer"]
+[node name="VSeparator" type="VSeparator" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer" unique_id=708047219]
 layout_mode = 2
 theme_override_constants/separation = 65
 theme_override_styles/separator = SubResource("StyleBoxEmpty_fuwdh")
 
-[node name="MusicSlider" type="HSlider" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer"]
+[node name="MusicSlider" type="HSlider" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer" unique_id=626505397]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 20)
 layout_mode = 2
@@ -459,7 +459,7 @@ max_value = 1.0
 step = 0.02
 value = 1.0
 
-[node name="MusicPercentLabel" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer"]
+[node name="MusicPercentLabel" type="Label" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer" unique_id=933563230]
 unique_name_in_owner = true
 layout_mode = 2
 text = "100%"
@@ -467,7 +467,7 @@ label_settings = SubResource("LabelSettings_gfn1q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionsBackButton" type="Button" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="OptionsBackButton" type="Button" parent="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=301108896]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -475,7 +475,7 @@ theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
-[node name="SFXSP2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SFXSP2D" type="AudioStreamPlayer2D" parent="." unique_id=17579585]
 unique_name_in_owner = true
 stream = ExtResource("4_yq03q")
 volume_db = 6.0
@@ -486,7 +486,7 @@ panning_strength = 1.75
 bus = &"SFX"
 area_mask = 3
 
-[node name="SliderSFXSP2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SliderSFXSP2D" type="AudioStreamPlayer2D" parent="." unique_id=1240729201]
 unique_name_in_owner = true
 stream = ExtResource("4_sx4xi")
 volume_db = 6.0
@@ -497,7 +497,7 @@ panning_strength = 1.75
 bus = &"SFX"
 area_mask = 3
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1292377832]
 stream = ExtResource("4_ra5nh")
 autoplay = true
 bus = &"Music"

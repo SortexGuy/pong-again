@@ -4,18 +4,16 @@ extends CharacterBody2D
 #signal reseted
 
 const SPEED = 300.0
-# Wall half-thickness, the ball radius is added on top
-const AI_WALL_MARGIN = 30.0
 enum PlayerType {
 	PLAYER_1,
 	PLAYER_2,
 	PLAYER_AI
 }
-# [reaction_time, error, speed_scale] per Globals.Difficulty
+# [reaction_time, error, speed_scale, spin_read] per Globals.Difficulty
 const AI_PRESETS = {
-	Globals.Difficulty.EASY: [0.3, 100.0, 0.65],
-	Globals.Difficulty.NORMAL: [0.15, 70.0, 0.85],
-	Globals.Difficulty.HARD: [0.06, 60.0, 1.0],
+	Globals.Difficulty.EASY: [0.3, 100.0, 0.65, 0.0],
+	Globals.Difficulty.NORMAL: [0.15, 70.0, 0.85, 0.5],
+	Globals.Difficulty.HARD: [0.06, 60.0, 1.0, 1.0],
 }
 
 @export var _id: PlayerType = PlayerType.PLAYER_1
@@ -29,6 +27,8 @@ const AI_PRESETS = {
 @export_range(0.0, 150.0, 1.0) var ai_error: float = 70.0
 ## Fraction of SPEED the AI can use
 @export_range(0.1, 1.0, 0.05) var ai_speed_scale: float = 0.85
+## How well the AI reads the ball's curve, 0 expects straight shots
+@export_range(0.0, 1.0, 0.05) var ai_spin_read: float = 0.5
 
 @onready var audio_sp: AudioStreamPlayer2D = %AudioSP2D
 @onready var half_size: Vector2 = _get_half_size()
@@ -55,6 +55,7 @@ func apply_ai_difficulty(difficulty: Globals.Difficulty) -> void:
 	ai_reaction_time = preset[0]
 	ai_error = preset[1]
 	ai_speed_scale = preset[2]
+	ai_spin_read = preset[3]
 
 func _physics_process(delta: float) -> void:
 #	if not reseting:
@@ -122,22 +123,10 @@ func _ai_update_target() -> void:
 		var steepness: float = abs(ball_vel.y) / ball_vel.length()
 		_ai_offset = randf_range(-ai_error, ai_error) * (0.5 + steepness)
 	
-	_ai_target_y = _predict_ball_y(ball_vel) + _ai_offset
-
-# Where the ball will be when it reaches our x, folding wall bounces
-func _predict_ball_y(ball_vel: Vector2) -> float:
-	# Ball center when it touches our face, not our center
+	# Aim for the ball center when it touches our face, not our center
 	var contact_x: float = position.x - \
 		sign(position.x - ai_ball.position.x) * (half_size.x + ai_ball.radius)
-	var time_to_reach: float = (contact_x - ai_ball.position.x) / ball_vel.x
-	var raw_y: float = ai_ball.position.y + ball_vel.y * time_to_reach
-	
-	var margin: float = AI_WALL_MARGIN + ai_ball.radius
-	var top: float = margin
-	var height: float = Globals.vp_size.y - margin*2
-	var folded: float = fposmod(raw_y - top, height*2)
-	if folded > height: folded = height*2 - folded
-	return top + folded
+	_ai_target_y = ai_ball.predict_y_at(contact_x, ai_spin_read) + _ai_offset
 
 #func reset(_right: bool) -> void:
 #	reseting = true
