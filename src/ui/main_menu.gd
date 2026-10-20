@@ -2,6 +2,7 @@ extends Node2D
 
 @export_range(0.1, 2.0, 0.05) var tw_time: float = 0.85
 @export_file("*.tscn", "*.scn") var pvp_scene: String
+@export_file("*.tscn", "*.scn") var pvai_scene: String
 @onready var sfxsp_2d: AudioStreamPlayer2D = %SFXSP2D
 @onready var slider_sfxsp_2d: AudioStreamPlayer2D = %SliderSFXSP2D
 @onready var version_label: Label = %VersionLabel
@@ -12,10 +13,12 @@ extends Node2D
 
 @onready var menu_layer: CanvasLayer = $MainMenuLayer
 @onready var game_choice_layer: CanvasLayer = $GameChoiceLayer
+@onready var difficulty_layer: CanvasLayer = $DifficultyLayer
 @onready var options_layer: CanvasLayer = $OptionsLayer
 
 @onready var play_button: Button = %PlayButton
 @onready var pvp_button: Button = %PvPButton
+@onready var normal_button: Button = %NormalButton
 @onready var master_slider: HSlider = %MasterSlider
 @onready var sfx_slider: HSlider = %SFXSlider
 @onready var music_slider: HSlider = %MusicSlider
@@ -80,13 +83,37 @@ func _on_pvp_button_pressed() -> void:
 func _on_pvai_button_pressed() -> void:
 	sfxsp_2d.position = %PvAIButton.get_global_rect().position
 	sfxsp_2d.play()
-	pass # Replace with function body.
+	await _fade_out(game_choice_layer, Vector2(960, 0))
+	_fade_in(difficulty_layer, Vector2(960, 0), normal_button)
 
 func _on_back_button_pressed() -> void:
 	sfxsp_2d.position = %BackButton.get_global_rect().position
 	sfxsp_2d.play()
 	await _fade_out(game_choice_layer, Vector2(960, 0))
 	_fade_in(menu_layer, Vector2(0, 540), play_button)
+
+# Difficulty Buttons
+func _start_pvai(difficulty: Globals.Difficulty, button: Button) -> void:
+	sfxsp_2d.position = button.get_global_rect().position
+	sfxsp_2d.play()
+	Globals.ai_difficulty = difficulty
+	await _fade_out(difficulty_layer, Vector2(960, 0))
+	Loader.goto_scene(pvai_scene)
+
+func _on_easy_button_pressed() -> void:
+	_start_pvai(Globals.Difficulty.EASY, %EasyButton)
+
+func _on_normal_button_pressed() -> void:
+	_start_pvai(Globals.Difficulty.NORMAL, normal_button)
+
+func _on_hard_button_pressed() -> void:
+	_start_pvai(Globals.Difficulty.HARD, %HardButton)
+
+func _on_difficulty_back_button_pressed() -> void:
+	sfxsp_2d.position = %DifficultyBackButton.get_global_rect().position
+	sfxsp_2d.play()
+	await _fade_out(difficulty_layer, Vector2(960, 0))
+	_fade_in(game_choice_layer, Vector2(960, 0), %PvAIButton)
 
 # Options Buttons
 func modify_bus_volume(value: float, bus_id: int, slider: Slider, label: Label) -> void:

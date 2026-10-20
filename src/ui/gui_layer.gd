@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal score_changed(p1_score: int, p2_score: int)
 
+@export var show_p2_controls: bool = true
+
 @onready var p1_score_label: Label = %P1ScoreLabel
 @onready var p2_score_label: Label = %P2ScoreLabel
 @onready var p_1v_box_container: VBoxContainer = %P1VBoxContainer
@@ -20,7 +22,10 @@ func set_indicator_tweens(cont: VBoxContainer) -> void:
 func _ready() -> void:
 	score_changed.connect(update_score)
 	set_indicator_tweens(p_1v_box_container)
-	set_indicator_tweens(p_2v_box_container)
+	if show_p2_controls:
+		set_indicator_tweens(p_2v_box_container)
+	else:
+		p_2v_box_container.hide()
 
 func update_score(p1_score: int, p2_score: int) -> void:
 	p1_score_label.text = str(p1_score)

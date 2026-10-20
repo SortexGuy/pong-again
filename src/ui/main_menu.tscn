@@ -26,6 +26,7 @@ font_size = 20
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_4fgbf")
 pvp_scene = "res://src/game_modes/pvp_mode.tscn"
+pvai_scene = "res://src/game_modes/pvai_mode.tscn"
 
 [node name="VersionLayer" type="CanvasLayer" parent="."]
 
@@ -205,7 +206,6 @@ focus_next = NodePath("../BackButton")
 focus_previous = NodePath("../PvPButton")
 theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
-disabled = true
 text = "PvCPU"
 
 [node name="BackButton" type="Button" parent="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -214,6 +214,100 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../PvAIButton")
 focus_previous = NodePath("../PvAIButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="DifficultyLayer" type="CanvasLayer" parent="."]
+offset = Vector2(960, 0)
+transform = Transform2D(1, 0, 0, 1, 960, 0)
+
+[node name="Control" type="Control" parent="DifficultyLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2xlck")
+
+[node name="TitleContainer" type="CenterContainer" parent="DifficultyLayer/Control"]
+layout_mode = 0
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.25
+grow_horizontal = 2
+
+[node name="TitleLabel" type="Label" parent="DifficultyLayer/Control/TitleContainer"]
+layout_mode = 2
+text = "Difficulty"
+label_settings = SubResource("LabelSettings_dc5ls")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ButtonContainer" type="CenterContainer" parent="DifficultyLayer/Control"]
+layout_mode = 0
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.95
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DifficultyLayer/Control/ButtonContainer"]
+custom_minimum_size = Vector2(360, 340)
+layout_mode = 2
+theme = ExtResource("2_2xlck")
+
+[node name="MarginContainer" type="MarginContainer" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EasyButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../NormalButton")
+focus_next = NodePath("../NormalButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "Easy"
+
+[node name="NormalButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../EasyButton")
+focus_neighbor_bottom = NodePath("../HardButton")
+focus_next = NodePath("../HardButton")
+focus_previous = NodePath("../EasyButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "Normal"
+
+[node name="HardButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../NormalButton")
+focus_neighbor_bottom = NodePath("../DifficultyBackButton")
+focus_next = NodePath("../DifficultyBackButton")
+focus_previous = NodePath("../NormalButton")
+theme = ExtResource("2_2xlck")
+theme_override_font_sizes/font_size = 24
+text = "Hard"
+
+[node name="DifficultyBackButton" type="Button" parent="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../HardButton")
+focus_previous = NodePath("../HardButton")
 theme = ExtResource("2_2xlck")
 theme_override_font_sizes/font_size = 24
 text = "Back"
@@ -415,6 +509,10 @@ parameters/looping = true
 [connection signal="pressed" from="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/PvPButton" to="." method="_on_pvp_button_pressed"]
 [connection signal="pressed" from="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/PvAIButton" to="." method="_on_pvai_button_pressed"]
 [connection signal="pressed" from="GameChoiceLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/NormalButton" to="." method="_on_normal_button_pressed"]
+[connection signal="pressed" from="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/HardButton" to="." method="_on_hard_button_pressed"]
+[connection signal="pressed" from="DifficultyLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/DifficultyBackButton" to="." method="_on_difficulty_back_button_pressed"]
 [connection signal="value_changed" from="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MasterSliderContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/SFXSliderContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="OptionsLayer/Control/ButtonContainer/PanelContainer/MarginContainer/VBoxContainer/MusicSliderContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]

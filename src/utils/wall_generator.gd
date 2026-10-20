@@ -73,7 +73,8 @@ func _ready():
 		var sprite_down: Sprite2D = Sprite2D.new()
 		sprite_down.texture = up_down_texture
 		var y_pos := Globals.vp_size.y
-		sprite_down.position = Vector2(x_pos, y_pos)
+		# Texture's opaque rows sit 1px low, line them up with the collision
+		sprite_down.position = Vector2(x_pos, y_pos - 1)
 		
 		sprite_batch.add_child(sprite_up, true)
 		sprite_batch.add_child(sprite_down, true)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0e7243bryr23"]
+[gd_scene format=3 uid="uid://d0e7243bryr23"]
 
 [ext_resource type="Theme" uid="uid://c485aq3nvu4j0" path="res://assets/game_theme.theme" id="1_yebih"]
-[ext_resource type="Script" path="res://src/ui/gui_layer.gd" id="1_yo2nf"]
+[ext_resource type="Script" uid="uid://6r4lsb6arrbr" path="res://src/ui/gui_layer.gd" id="1_yo2nf"]
 [ext_resource type="FontVariation" uid="uid://cy36dde3oif13" path="res://assets/fonts/PressStart2P_FontVar.res" id="2_hbqte"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hdtdj"]
@@ -16,11 +16,11 @@ shadow_color = Color(0, 0, 0, 0.705882)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pudjl"]
 
-[node name="GuiLayer" type="CanvasLayer"]
+[node name="GuiLayer" type="CanvasLayer" unique_id=2135038272]
 layer = 20
 script = ExtResource("1_yo2nf")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=262519559]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yebih")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1438699353]
 layout_mode = 0
 anchor_top = 0.06
 anchor_right = 1.0
@@ -39,7 +39,7 @@ offset_bottom = 51.6
 grow_horizontal = 2
 alignment = 1
 
-[node name="P1ScoreLabel" type="Label" parent="Control/HBoxContainer"]
+[node name="P1ScoreLabel" type="Label" parent="Control/HBoxContainer" unique_id=1001490378]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
@@ -48,22 +48,21 @@ label_settings = SubResource("LabelSettings_hdtdj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="Control/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Control/HBoxContainer" unique_id=909041410]
 layout_mode = 2
 theme_override_constants/separation = 64
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hsvpt")
 
-[node name="P2ScoreLabel" type="Label" parent="Control/HBoxContainer"]
+[node name="P2ScoreLabel" type="Label" parent="Control/HBoxContainer" unique_id=1996992459]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "0
-"
+text = "0"
 label_settings = SubResource("LabelSettings_hdtdj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="P1VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="P1VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1730746906]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
@@ -73,22 +72,22 @@ offset_right = 67.0
 grow_vertical = 2
 alignment = 1
 
-[node name="UpLabel" type="Label" parent="Control/P1VBoxContainer"]
+[node name="UpLabel" type="Label" parent="Control/P1VBoxContainer" unique_id=962497860]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "W"
 
-[node name="HSeparator" type="HSeparator" parent="Control/P1VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/P1VBoxContainer" unique_id=1438862191]
 layout_mode = 2
 theme_override_constants/separation = 226
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pudjl")
 
-[node name="DownLabel" type="Label" parent="Control/P1VBoxContainer"]
+[node name="DownLabel" type="Label" parent="Control/P1VBoxContainer" unique_id=256818831]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "S"
 
-[node name="P2VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="P2VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1303270448]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 11
@@ -101,19 +100,19 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 1
 
-[node name="UpLabel" type="Label" parent="Control/P2VBoxContainer"]
+[node name="UpLabel" type="Label" parent="Control/P2VBoxContainer" unique_id=1631929951]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Up"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Control/P2VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/P2VBoxContainer" unique_id=2001646119]
 layout_mode = 2
 theme_override_constants/separation = 226
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pudjl")
 
-[node name="DownLabel" type="Label" parent="Control/P2VBoxContainer"]
+[node name="DownLabel" type="Label" parent="Control/P2VBoxContainer" unique_id=1582325137]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Down

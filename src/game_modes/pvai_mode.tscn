@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://5n6da74a3y7e"]
+
+[ext_resource type="PackedScene" uid="uid://deim3rm6ie4sf" path="res://src/ui/pause_menu_layer.tscn" id="1_o83yh"]
+[ext_resource type="Script" uid="uid://d18tq54xgbds8" path="res://src/game_modes/pvp_mode.gd" id="1_ygs05"]
+[ext_resource type="PackedScene" uid="uid://d0e7243bryr23" path="res://src/ui/gui_layer.tscn" id="2_ffxv3"]
+[ext_resource type="Script" uid="uid://hxu0fkgl0nll" path="res://src/utils/wall_generator.gd" id="3_gdq0t"]
+[ext_resource type="PackedScene" uid="uid://cmmpnnvsrjrv8" path="res://src/ui/win_screen_layer.tscn" id="4_bhywb"]
+[ext_resource type="Texture2D" uid="uid://i2k221p0rwc7" path="res://assets/textures/PongWallUpDown.png" id="5_4fm85"]
+[ext_resource type="PackedScene" uid="uid://dihj5r02f5xnk" path="res://src/characters/ball.tscn" id="5_8vsrq"]
+[ext_resource type="PackedScene" uid="uid://cr3cdjgxbsfwd" path="res://src/characters/player.tscn" id="6_5ewnn"]
+[ext_resource type="AudioStream" uid="uid://w5h5qc2i1cnv" path="res://assets/audio/pickupCoin.wav" id="9_gc3y8"]
+[ext_resource type="AudioStream" uid="uid://b8dmd5o51ryuf" path="res://assets/music/VGMA Challenge 20.ogg" id="10_ggitu"]
+
+[node name="PvAIMode" type="Node2D" unique_id=1800671755]
+script = ExtResource("1_ygs05")
+
+[node name="PauseMenuLayer" parent="." unique_id=1753733103 instance=ExtResource("1_o83yh")]
+
+[node name="GuiLayer" parent="." unique_id=970767276 instance=ExtResource("2_ffxv3")]
+show_p2_controls = false
+
+[node name="WinScreenLayer" parent="." unique_id=1369043145 instance=ExtResource("4_bhywb")]
+p2_name = "CPU"
+
+[node name="WallGenerator" type="Node2D" parent="." unique_id=29752487]
+script = ExtResource("3_gdq0t")
+up_down_texture = ExtResource("5_4fm85")
+
+[node name="Ball" parent="." unique_id=1194394046 instance=ExtResource("5_8vsrq")]
+unique_name_in_owner = true
+position = Vector2(480, 270)
+
+[node name="PlayerL" parent="." unique_id=159443375 instance=ExtResource("6_5ewnn")]
+unique_name_in_owner = true
+position = Vector2(168, 270)
+init_pos = Vector2(120, 270)
+
+[node name="PlayerR" parent="." unique_id=729500836 node_paths=PackedStringArray("ai_ball") instance=ExtResource("6_5ewnn")]
+unique_name_in_owner = true
+position = Vector2(843, 256)
+_id = 2
+init_pos = Vector2(840, 270)
+ai_ball = NodePath("../Ball")
+
+[node name="WinSP2D" type="AudioStreamPlayer2D" parent="." unique_id=1733902273]
+unique_name_in_owner = true
+stream = ExtResource("9_gc3y8")
+volume_db = 6.0
+max_distance = 1920.0
+attenuation = 3.0
+max_polyphony = 2
+panning_strength = 1.75
+bus = &"SFX"
+area_mask = 3
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=341485249]
+process_mode = 3
+stream = ExtResource("10_ggitu")
+volume_db = -12.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true

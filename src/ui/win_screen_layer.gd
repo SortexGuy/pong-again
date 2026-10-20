@@ -2,6 +2,8 @@ extends CanvasLayer
 
 
 @export_file("*.tscn","*.scn") var main_menu_scene: String
+@export var p1_name: String = "Player 1"
+@export var p2_name: String = "Player 2"
 
 @onready var color_rect: ColorRect = %ColorRect
 @onready var content_layer: CanvasLayer = %ContentLayer
@@ -9,10 +11,10 @@ extends CanvasLayer
 @onready var title_label: Label = %TitleLabel
 
 func on_game_ended(p2: bool) -> void:
-	var player = "1"
+	var player = p1_name
 	if p2:
-		player = "2"
-	title_label.text = "Player "+player+" Wins!!"
+		player = p2_name
+	title_label.text = player+" Wins!!"
 	pop_up_screen()
 
 func startup_screen() -> void:
